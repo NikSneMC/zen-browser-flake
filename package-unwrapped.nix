@@ -90,7 +90,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     description = "Beautiful, fast, private browser";
     license = lib.licenses.mpl20;
     mainProgram = "zen";
-    platforms = [sourceInfo.system];
+    # platforms = [sourceInfo.system];
   };
 
   passthru = {

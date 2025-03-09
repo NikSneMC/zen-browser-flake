@@ -16,18 +16,21 @@ inputs = {
 
 ## Packages
 
-This flake exposes three channels, alpha, beta and twilight. [There are no generic and specific versions.](https://github.com/zen-browser/desktop/wiki/Why-have-optimized-builds-been-removed%3F)
+This flake exposes three channels, alpha, beta and twilight, and every version of the Zen browser.
 
 Then in the `configuration.nix` in the `environment.systemPackages` add one of:
-
 ```nix
-inputs.zen-browser.packages."${system}".alpha
-inputs.zen-browser.packages."${system}".beta
-inputs.zen-browser.packages."${system}".twilight
+inputs.zen-browser.packages.${system}.alpha
+inputs.zen-browser.packages.${system}.beta
+inputs.zen-browser.packages.${system}.twilight
+```
+
+Or specify version like this:
+```nix
+inputs.zen-browser.packages.${system}."1.0.2-b.3-generic"
 ```
 
 Depending on which version you want
-
 ```shell
 $ sudo nixos-rebuild switch
 $ zen

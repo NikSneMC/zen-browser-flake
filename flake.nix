@@ -11,45 +11,78 @@
     nixpkgs,
     flake-utils,
   }: let
+    inherit (builtins) split elemAt attrValues;
     systems = {
-      aarch64-linux = "linux-aarch64";
-      x86_64-linux = "linux-x86_64";
+      linux-aarch64 = "aarch64-linux";
+      linux-x86_64 = "x86_64-linux";
+      linux-generic = "x86_64-linux.generic";
+      linux-specific = "x86_64-linux.specific";
+      linux = "x86_64-linux";
     };
   in
-    flake-utils.lib.eachSystem (builtins.attrNames systems) (system: let
+    flake-utils.lib.eachSystem (map (s: builtins.head (split "\\." s)) (attrValues systems)) (system: let
       pkgs = nixpkgs.legacyPackages.${system};
       inherit (pkgs) lib;
+      inherit (lib) pipe;
 
-      info = lib.pipe ./info.json [
-        builtins.readFile
-        builtins.fromJSON
-      ];
+      splitSys = sys: let
+        parts = pipe sys [
+          (name: systems.${name})
+          (split "\\.")
+        ];
+      in {
+        system = builtins.head parts;
+        suffix = pipe parts [
+          builtins.tail
+          (map (p:
+            if builtins.isString p
+            then p
+            else ""))
+          (builtins.concatStringsSep "-")
+        ];
+      };
 
-      mkZen = channel: let
+      mkZen = system: suffix: key: ver: src: let
+        version = "${key}${suffix}";
+
         sourceInfo = {
-          inherit channel system;
-          inherit (info.${channel}) version;
-          src = info.${channel}.systems.${systems.${system}};
+          inherit system src;
+          version = "${ver}${suffix}";
         };
 
         unwrapped = pkgs.callPackage ./package-unwrapped.nix {inherit sourceInfo;};
         wrapped = pkgs.callPackage ./package.nix {inherit unwrapped;};
       in {
-        "${channel}-unwrapped" = unwrapped;
-        ${channel} = wrapped;
+        "${version}-unwrapped" = unwrapped;
+        ${version} = wrapped;
       };
 
-      mkZenChannels = channels:
-        lib.pipe channels [
-          (map mkZen)
-          lib.zipAttrs
-          (builtins.mapAttrs (_: drv: builtins.elemAt drv 0))
+      mkPackages = info: let
+        inherit (builtins) mapAttrs;
+        inherit (lib) attrsToList flatten;
+      in
+        pipe (info.versions // (mapAttrs (_: version: info.versions.${version}) info.channels)) [
+          (mapAttrs (version: meta:
+            pipe meta.downloads [
+              (lib.mapAttrs' (sys: download: let
+                sys_split = splitSys sys;
+                system = sys_split.system;
+                suffix = sys_split.suffix;
+              in
+                lib.nameValuePair system (mkZen system suffix version meta.info.version download)))
+              attrsToList
+            ]))
+          builtins.attrValues
+          lib.flatten
+          (builtins.groupBy (download: download.name))
+          (mapAttrs (_: downloads: pipe downloads [(map (download: download.value)) (map attrsToList) flatten builtins.listToAttrs]))
         ];
-    in {
-      packages = mkZenChannels [
-        "alpha"
-        "beta"
-        "twilight"
+      allPackages = pipe ./info.json [
+        builtins.readFile
+        builtins.fromJSON
+        mkPackages
       ];
+    in {
+      packages = allPackages.${system};
     });
 }
