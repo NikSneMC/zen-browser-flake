@@ -16,5 +16,5 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Update packages"
+          commit_message: "chore: update packages"
           push_options: '--force'
