@@ -25,6 +25,7 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "zen-browser-unwrapped";
+  applicationName = "Zen Browser";
   inherit (sourceInfo) version;
 
   src = fetchurl sourceInfo.src;
