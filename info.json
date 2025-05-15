@@ -7,11 +7,45 @@
     "linux"
   ],
   "channels": {
-    "beta": "1.12.3b",
+    "beta": "1.12.5b",
     "twilight": "1.13t",
     "alpha": "1.0.1-a.22"
   },
   "versions": {
+    "1.12.5b": {
+      "info": {
+        "version": "1.12.5b",
+        "published_at": "2025-05-14T22:23:27Z",
+        "channel": "b"
+      },
+      "downloads": {
+        "linux-aarch64": {
+          "url": "https://github.com/zen-browser/desktop/releases/download/1.12.5b/zen.linux-aarch64.tar.xz",
+          "hash": "sha256-0LwN16LjF/xqJCZErjFCeBr/YmV726fQ0UEPfOEm4YM="
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/zen-browser/desktop/releases/download/1.12.5b/zen.linux-x86_64.tar.xz",
+          "hash": "sha256-7MDU9JZra6kf4h3MZz6wBL7ccg4cvgLmxnH+LoE5pXc="
+        }
+      }
+    },
+    "1.12.4b": {
+      "info": {
+        "version": "1.12.4b",
+        "published_at": "2025-05-14T08:50:07Z",
+        "channel": "b"
+      },
+      "downloads": {
+        "linux-aarch64": {
+          "url": "https://github.com/zen-browser/desktop/releases/download/1.12.4b/zen.linux-aarch64.tar.xz",
+          "hash": "sha256-eza2BYZKQ6R+Dbx/C0VQ4CWU34eQtQ8/QwiKmaGMFZM="
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/zen-browser/desktop/releases/download/1.12.4b/zen.linux-x86_64.tar.xz",
+          "hash": "sha256-ybWrnRMYn6EEgIjATmnoTsTsYb9mYLNLYKSeTB2Xl6E="
+        }
+      }
+    },
     "1.12.3b": {
       "info": {
         "version": "1.12.3b",
@@ -344,11 +378,11 @@
       "downloads": {
         "linux-aarch64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-aarch64.tar.xz",
-          "hash": "sha256-EngANbZRdUisTL5C5DsR5jyHP9MKmTvJJIfY5e94ATQ="
+          "hash": "sha256-jjoTFI9XAQ+azE+JLq1hdSDK6/LvszcjaUtMJEkCKAE="
         },
         "linux-x86_64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz",
-          "hash": "sha256-WuTtPYx5DJlmwHSWe8jrtqqCN2jJ7w5ReFnpA4KeG1s="
+          "hash": "sha256-navuV5NukGMc+vm13+7SaRWPAYGFoG2AGk6qxMR6RQ0="
         }
       }
     },
