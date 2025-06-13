@@ -8,7 +8,7 @@
   ],
   "channels": {
     "beta": "1.12.10b",
-    "twilight": "1.13t",
+    "twilight": "1.14t",
     "alpha": "1.0.1-a.22"
   },
   "versions": {
@@ -454,20 +454,20 @@
         }
       }
     },
-    "1.13t": {
+    "1.14t": {
       "info": {
-        "version": "1.13t",
+        "version": "1.14t",
         "published_at": "2025-02-14T23:22:29Z",
         "channel": "t"
       },
       "downloads": {
         "linux-aarch64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-aarch64.tar.xz",
-          "hash": "sha256-4xInRMUx+pqwQ5caihOPPf2PBk5EaMpNIOmCKhqXTmU="
+          "hash": "sha256-ZEsdnJFctdjaXvvmk5ROoyFlO7NJRFLQ/MUWugM2dus="
         },
         "linux-x86_64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz",
-          "hash": "sha256-xPvmeSkurRGDmCOSNJHp+xxikyPiY1+Cw5rIjcqHgmI="
+          "hash": "sha256-vxtRdKXXw4WJFhJnLOnLqlN1nJ3yJ44dr4toKEqN5dA="
         }
       }
     },
