@@ -514,11 +514,11 @@
       "downloads": {
         "linux-aarch64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-aarch64.tar.xz",
-          "hash": "sha256-LBMn9REvWAWl8/Vu4l5A5TSrqZQRZNDBdQ+NkYS2/Tw="
+          "hash": "sha256-ouNvDENFAE2rRQmykufTxhVpZFAhLNHRXE3b/O4PMjw="
         },
         "linux-x86_64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz",
-          "hash": "sha256-Km0lGdJrMj4ScLt9JYXkIF2TNiumnofnPGlm+JGY5TA="
+          "hash": "sha256-4JrhfKvw0EsyczmKZHkoepkgAEuJkd3MXgWfhTtIZlw="
         }
       }
     },
