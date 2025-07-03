@@ -7,11 +7,28 @@
     "linux"
   ],
   "channels": {
-    "beta": "1.14b",
+    "beta": "1.14.1b",
     "twilight": "1.15t",
     "alpha": "1.0.1-a.22"
   },
   "versions": {
+    "1.14.1b": {
+      "info": {
+        "version": "1.14.1b",
+        "published_at": "2025-07-02T07:19:30Z",
+        "channel": "b"
+      },
+      "downloads": {
+        "linux-aarch64": {
+          "url": "https://github.com/zen-browser/desktop/releases/download/1.14.1b/zen.linux-aarch64.tar.xz",
+          "hash": "sha256-ksORqZyntO0QMLKjBYGJPQYcdqYd2lgdrV41lin3gOQ="
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/zen-browser/desktop/releases/download/1.14.1b/zen.linux-x86_64.tar.xz",
+          "hash": "sha256-v5o0QIhO2IqUIBbqRI4c9YzyPyqAPW3g5rmdMoQOHs8="
+        }
+      }
+    },
     "1.14b": {
       "info": {
         "version": "1.14b",
@@ -531,11 +548,11 @@
       "downloads": {
         "linux-aarch64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-aarch64.tar.xz",
-          "hash": "sha256-lSUDcFrEILUs8J9Z1sHz7BjuChqwALKdRwPBjdpsWgg="
+          "hash": "sha256-zbVmqYDiAKUoNJecqkQZvhDPHAeNILK7El+V4/jaPVk="
         },
         "linux-x86_64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz",
-          "hash": "sha256-xLFQ0Vm47bvSmnkRuf5ykN3S6wYKTW3/k1IJcisSsRk="
+          "hash": "sha256-+kKITSVdZL2HhmYGpBC8Yl73dlyBTh5MH20xTbpUiQU="
         }
       }
     },
@@ -1696,19 +1713,6 @@
         "linux": {
           "url": "https://github.com/zen-browser/desktop/releases/download/1.0.0-a.6/zen.linux.tar.bz2",
           "hash": "sha256-UeZ5IGcVZbejtfDr/20/gC2LycnewGcpRQk0swLXKrg="
-        }
-      }
-    },
-    "1.0.0-a.4": {
-      "info": {
-        "version": "1.0.0-a.4",
-        "published_at": "2024-07-14T16:26:37Z",
-        "channel": "a"
-      },
-      "downloads": {
-        "linux": {
-          "url": "https://github.com/zen-browser/desktop/releases/download/1.0.0-a.4/zen.linux.tar.bz2",
-          "hash": "sha256-PWJFEAEoIDzYatZ4kKD0KHmjTuKnzkQS+rBALhoAQ4I="
         }
       }
     }
