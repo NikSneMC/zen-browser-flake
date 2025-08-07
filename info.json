@@ -7,11 +7,28 @@
     "linux"
   ],
   "channels": {
-    "beta": "1.14.9b",
+    "beta": "1.14.10b",
     "twilight": "1.15t",
     "alpha": "1.0.1-a.22"
   },
   "versions": {
+    "1.14.10b": {
+      "info": {
+        "version": "1.14.10b",
+        "published_at": "2025-08-06T15:49:07Z",
+        "channel": "b"
+      },
+      "downloads": {
+        "linux-aarch64": {
+          "url": "https://github.com/zen-browser/desktop/releases/download/1.14.10b/zen.linux-aarch64.tar.xz",
+          "hash": "sha256-yw37LGVfHPoN/FKNQfXFfNuhGimpEfcoqnEhiDWuZno="
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/zen-browser/desktop/releases/download/1.14.10b/zen.linux-x86_64.tar.xz",
+          "hash": "sha256-Q0wK9dB2FUqwaLF0aaNvNs/N4KUwEh6YBEiULmKwdmA="
+        }
+      }
+    },
     "1.14.9b": {
       "info": {
         "version": "1.14.9b",
@@ -684,11 +701,11 @@
       "downloads": {
         "linux-aarch64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-aarch64.tar.xz",
-          "hash": "sha256-sXF13dmODpC/yFY3qFFq+0zqARLoauxrVrDPUX8YUzs="
+          "hash": "sha256-jJhM8291yGG+sflVdrmP/BwdkTtfnoQjB76VqyLhY+k="
         },
         "linux-x86_64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz",
-          "hash": "sha256-7I4MAVkBGMfXqQl/gD5koZwU8lg3TkskXnFL+yGtweA="
+          "hash": "sha256-yrKYZXV5Hvyois6aBVSpXUy9N+zSOAnxUnstm/VwVfM="
         }
       }
     },
@@ -1716,23 +1733,6 @@
         "linux-specific": {
           "url": "https://github.com/zen-browser/desktop/releases/download/1.0.0-a.15/zen.linux-specific.tar.bz2",
           "hash": "sha256-i8L8sZ00PDMT86gY5KOK0e7Fjgf3AGdsgmgdnLQHIR4="
-        }
-      }
-    },
-    "1.0.0-a.14": {
-      "info": {
-        "version": "1.0.0-a.14",
-        "published_at": "2024-08-07T14:47:51Z",
-        "channel": "a"
-      },
-      "downloads": {
-        "linux-generic": {
-          "url": "https://github.com/zen-browser/desktop/releases/download/1.0.0-a.14/zen.linux-generic.tar.bz2",
-          "hash": "sha256-CoLgF6o9qKSVBzrgScTEu+MSTZngJN10Q8fEjy6BQ10="
-        },
-        "linux-specific": {
-          "url": "https://github.com/zen-browser/desktop/releases/download/1.0.0-a.14/zen.linux-specific.tar.bz2",
-          "hash": "sha256-WWLcKRvhueTZyLGRWPe0biK4IKVA7zE3ofpS9VBCWVY="
         }
       }
     }
