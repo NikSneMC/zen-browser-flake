@@ -33,7 +33,7 @@ class Download(TypedDict):
 Downloads = dict[str, Download]
 
 
-class Version(TypedDict):        
+class Version(TypedDict):
     info: VersionInfo
     downloads: Downloads
 
@@ -57,19 +57,19 @@ def parse_version_info(version: RawVersion) -> VersionInfo:
     else:
         channel = version_splitted[0][-1]
     return VersionInfo(
-        version=version_str,
-        published_at=version["published_at"],
-        channel=channel
+        version=version_str, published_at=version["published_at"], channel=channel
     )
 
 
 def process_url(url: str) -> Download:
     file_str: str = " (".join(url.split("/")[-1:-3:-1]) + ")"
     print(f"Computing hash for {file_str}")
-    hash: str = loads(run(
+    hash: str = loads(
+        run(
             f"nix store prefetch-file {url} --log-format raw --json".split(),
-        stdout=PIPE
-    ).stdout.decode("utf-8"))["hash"]
+            stdout=PIPE,
+        ).stdout.decode("utf-8")
+    )["hash"]
     print(f"Hash for {file_str} is {hash}")
     return Download(url=url, hash=hash)
 
@@ -79,7 +79,9 @@ def fetch_downloads(raw_version: RawVersion, old_info: Info) -> Downloads:
         future_to_system: dict[Future[Download], str] = {}
         for asset in raw_version["assets"]:
             for system in old_info["systems"]:
-                if asset["name"] not in [f"zen.{system}.{ext}" for ext in ("tar.bz2", "tar.xz")]:
+                if asset["name"] not in [
+                    f"zen.{system}.{ext}" for ext in ("tar.bz2", "tar.xz")
+                ]:
                     continue
                 url: str = asset["browser_download_url"]
                 future_to_system[executor.submit(process_url, url)] = system
@@ -92,22 +94,38 @@ def fetch_downloads(raw_version: RawVersion, old_info: Info) -> Downloads:
 def parse_versions(old_info: Info) -> Callable[[RawVersion], tuple[str, Version]]:
     def parse_version(raw_version: RawVersion) -> tuple[str, Version]:
         version_info = parse_version_info(raw_version)
-        if version_info["channel"] != "t" and version_info["version"] in old_info["versions"].keys():
+        if (
+            version_info["channel"] != "t"
+            and version_info["version"] in old_info["versions"].keys()
+        ):
             version = old_info["versions"][version_info["version"]]
         else:
             print(f"Found new version: {version_info['version']}")
             version = Version(
-                info=version_info,
-                downloads=fetch_downloads(raw_version, old_info)
+                info=version_info, downloads=fetch_downloads(raw_version, old_info)
             )
         return version["info"]["version"], version
+
     return parse_version
 
 
 def get_info(old_info: Info) -> Info:
-    raw_versions: list[RawVersion] | RawVersion = get("https://api.github.com/repos/zen-browser/desktop/releases?per_page=4444").json()
-    if isinstance(raw_versions, dict):
-        raw_versions = [raw_versions]
+    raw_versions: list[RawVersion] = []
+    page: int = 1
+    while 1:
+        raw_versions_page: list[RawVersion] | RawVersion = get(
+            f"https://api.github.com/repos/zen-browser/desktop/releases?per_page=100&page={page}"
+        ).json()
+
+        if isinstance(raw_versions_page, dict):
+            raw_versions_page = [raw_versions_page]
+
+        if len(raw_versions_page) == 0:
+            break
+
+        raw_versions.extend(raw_versions_page)
+        page += 1
+
     with ThreadPoolExecutor(max_workers=(cpu_count() or 1) * 4) as executor:
         futures: list[Future[tuple[str, Version]]] = []
         for raw_version in raw_versions:
@@ -116,11 +134,13 @@ def get_info(old_info: Info) -> Info:
         for future in as_completed(futures):
             version_name, version = future.result()
             versions[version_name] = version
-    versions = Versions(sorted(
-        versions.items(),
-        key=lambda v: v[1]["info"]["published_at"],
-        reverse=True
-    ))
+    versions = Versions(
+        sorted(
+            [*old_info["versions"].items(), *versions.items()],
+            key=lambda v: v[1]["info"]["published_at"],
+            reverse=True,
+        )
+    )
     channels_map = dict(map(lambda c: (c[0], c), old_info["channels"].keys()))
     channels: Channels = {}
     for version in versions.values():
@@ -131,11 +151,7 @@ def get_info(old_info: Info) -> Info:
             continue
         channels[channel] = version["info"]["version"]
 
-    return Info(
-        systems=old_info["systems"],
-        channels=channels, 
-        versions=versions
-    )
+    return Info(systems=old_info["systems"], channels=channels, versions=versions)
 
 
 def main(info_file: str) -> None:
@@ -149,6 +165,7 @@ def main(info_file: str) -> None:
             dump(new_info, f, indent=2)
     else:
         print("Zen Browser is up-to-date")
+
 
 if __name__ == "__main__":
     main("./info.json")
