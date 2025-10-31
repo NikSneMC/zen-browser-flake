@@ -9,10 +9,12 @@
     self,
     nixpkgs,
   }: let
-    inherit (builtins) split;
+    inherit (builtins) split head tail isString concatStringsSep mapAttrs attrValues groupBy listToAttrs readFile fromJSON;
+
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    inherit (pkgs) lib;
-    inherit (lib) pipe;
+
+    inherit (pkgs) lib callPackage;
+    inherit (lib) pipe mapAttrs' nameValuePair attrsToList flatten;
 
     systems = {
       linux-aarch64 = "aarch64-linux";
@@ -28,14 +30,14 @@
         (split "\\.")
       ];
     in {
-      system = builtins.head parts;
+      system = head parts;
       suffix = pipe parts [
-        builtins.tail
+        tail
         (map (p:
-          if builtins.isString p
+          if isString p
           then p
           else ""))
-        (builtins.concatStringsSep "-")
+        (concatStringsSep "-")
       ];
     };
 
@@ -47,37 +49,34 @@
         version = "${ver}${suffix}";
       };
 
-      unwrapped = pkgs.callPackage ./package-unwrapped.nix {inherit sourceInfo;};
-      wrapped = pkgs.callPackage ./package.nix {inherit unwrapped;};
+      unwrapped = callPackage ./package-unwrapped.nix {inherit sourceInfo;};
+      wrapped = callPackage ./package.nix {inherit unwrapped;};
     in {
       "${version}-unwrapped" = unwrapped;
       ${version} = wrapped;
     };
 
-    mkPackages = info: let
-      inherit (builtins) mapAttrs;
-      inherit (lib) attrsToList flatten;
-    in
+    mkPackages = info:
       pipe (info.versions // (mapAttrs (_: version: info.versions.${version}) info.channels)) [
         (mapAttrs (version: meta:
           pipe meta.downloads [
-            (lib.mapAttrs' (sys: download: let
+            (mapAttrs' (sys: download: let
               sys_split = splitSys sys;
               system = sys_split.system;
               suffix = sys_split.suffix;
             in
-              lib.nameValuePair system (mkZen system suffix version meta.info.version download)))
+              nameValuePair system (mkZen system suffix version meta.info.version download)))
             attrsToList
           ]))
-        builtins.attrValues
-        lib.flatten
-        (builtins.groupBy (download: download.name))
-        (mapAttrs (_: downloads: pipe downloads [(map (download: download.value)) (map attrsToList) flatten builtins.listToAttrs]))
+        attrValues
+        flatten
+        (groupBy ({name, ...}: name))
+        (mapAttrs (_: downloads: pipe downloads [(map ({value, ...}: value)) (map attrsToList) flatten listToAttrs]))
       ];
   in {
     packages = pipe ./info.json [
-      builtins.readFile
-      builtins.fromJSON
+      readFile
+      fromJSON
       mkPackages
     ];
   };
