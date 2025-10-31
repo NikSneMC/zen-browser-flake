@@ -3,7 +3,7 @@
   stdenvNoCC,
   fetchurl,
   autoPatchelfHook,
-  wrapGAppsHook,
+  wrapGAppsHook3,
   copyDesktopItems,
   fd,
   # deps
@@ -33,7 +33,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     fd
     autoPatchelfHook
-    wrapGAppsHook
+    wrapGAppsHook3
     copyDesktopItems
   ];
 
