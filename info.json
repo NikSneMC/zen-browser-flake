@@ -7,11 +7,28 @@
     "linux"
   ],
   "channels": {
-    "beta": "1.17.5b",
+    "beta": "1.17.6b",
     "twilight": "1.16t",
     "alpha": "1.0.1-a.22"
   },
   "versions": {
+    "1.17.6b": {
+      "info": {
+        "version": "1.17.6b",
+        "published_at": "2025-11-07T17:52:42Z",
+        "channel": "b"
+      },
+      "downloads": {
+        "linux-aarch64": {
+          "url": "https://github.com/zen-browser/desktop/releases/download/1.17.6b/zen.linux-aarch64.tar.xz",
+          "hash": "sha256-i8AdPgG10fP31XE/SZ5p6jWy0mVZpu6rNiLv5rj9XoA="
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/zen-browser/desktop/releases/download/1.17.6b/zen.linux-x86_64.tar.xz",
+          "hash": "sha256-JK0g3ntorqX5Ybo+eDIES0JSPQ1ZOsQ2aasyZrur8zY="
+        }
+      }
+    },
     "1.17.5b": {
       "info": {
         "version": "1.17.5b",
@@ -1041,11 +1058,11 @@
       "downloads": {
         "linux-aarch64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-aarch64.tar.xz",
-          "hash": "sha256-xwd+Jvt2OQdSh7aJTg5qb9z5LAO3Lp6lfD1yRdm3xls="
+          "hash": "sha256-2a5W87Ty4RDIwoSJeW8qecbq2rkbMplXavnmAtemAuI="
         },
         "linux-x86_64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz",
-          "hash": "sha256-IG9ovM4lH+1VFRpJO+GoYzJEH4qicoq3GHhat2PNBCs="
+          "hash": "sha256-M1SyNaZmb0Uomzr8v/2odGAN+KrP6JWrmiUIwl3mj9E="
         }
       }
     },
