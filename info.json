@@ -1211,11 +1211,11 @@
       "downloads": {
         "linux-aarch64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-aarch64.tar.xz",
-          "hash": "sha256-q8CIhIeGLF+uGvBEBAcDFmY93QO/O+llk92kbelbAng="
+          "hash": "sha256-b1XwZ+Msgfpz2MZSvXsE53t2fkaRvXDEbTKY1GILJuI="
         },
         "linux-x86_64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz",
-          "hash": "sha256-PND113aD+Qmzft60DJ6LTBP3bCYH5y2XMfsTkqDpebU="
+          "hash": "sha256-Zq44ejN8H/ur6C1sybVe2pr05kzOS4Lbl7z1Vv3t9q8="
         }
       }
     },
