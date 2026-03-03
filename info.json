@@ -8,7 +8,7 @@
   ],
   "channels": {
     "beta": "1.19b",
-    "twilight": "1.19t",
+    "twilight": "1.20t",
     "alpha": "1.0.1-a.22"
   },
   "versions": {
@@ -29,20 +29,20 @@
         }
       }
     },
-    "1.19t": {
+    "1.20t": {
       "info": {
-        "version": "1.19t",
-        "published_at": "2025-02-14T23:22:29Z",
+        "version": "1.20t",
+        "published_at": "2026-02-21T15:37:26Z",
         "channel": "t"
       },
       "downloads": {
         "linux-aarch64": {
-          "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-aarch64.tar.xz",
-          "hash": "sha256-tHPmUo/ECgqKVctfXPLmWaDJoZPw7xt7Ne8OTdDM2tI="
+          "url": "https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-aarch64.tar.xz",
+          "hash": "sha256-cQpCelQMAJBTY0ZZu6PHTtPcPeMisJZJrWezq94Er/8="
         },
         "linux-x86_64": {
-          "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz",
-          "hash": "sha256-Ztxq2gm8Mv+7KjadB8C3pmE9JU958NYCAJq5/8D6AxU="
+          "url": "https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz",
+          "hash": "sha256-6XMiA9/WL++OVvBBUYgWUyaIiW+GsBsNK5LGzTMTNcM="
         }
       }
     },
@@ -1386,6 +1386,23 @@
         "linux-x86_64": {
           "url": "https://github.com/zen-browser/desktop/releases/download/1.8b/zen.linux-x86_64.tar.xz",
           "hash": "sha256-0d5jRJ30Vzf3U4cCJysQ2xsffmaLjIBHY5FLQ3hWcO8="
+        }
+      }
+    },
+    "1.19t": {
+      "info": {
+        "version": "1.19t",
+        "published_at": "2025-02-14T23:22:29Z",
+        "channel": "t"
+      },
+      "downloads": {
+        "linux-aarch64": {
+          "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-aarch64.tar.xz",
+          "hash": "sha256-tHPmUo/ECgqKVctfXPLmWaDJoZPw7xt7Ne8OTdDM2tI="
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz",
+          "hash": "sha256-Ztxq2gm8Mv+7KjadB8C3pmE9JU958NYCAJq5/8D6AxU="
         }
       }
     },
